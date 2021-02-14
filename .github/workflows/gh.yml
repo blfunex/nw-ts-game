@@ -13,9 +13,10 @@ jobs:
         with:
           persist-credentials: false
       - name: Install and Build 🔧
-        run: npm ci
-        run: npm run compile
-        # run: npm test
+        run: |
+          npm ci
+          npm run compile
+        # npm test
         env:
           NODE_ENV: production
       - name: Deploy 🚀
