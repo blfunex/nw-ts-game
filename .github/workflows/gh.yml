@@ -15,10 +15,8 @@ jobs:
       - name: Install and Build 🔧
         run: |
           sudo npm ci
-          sudo npm run compile
+          sudo npm run compile:production
         # sudo npm test
-        env:
-          NODE_ENV: production
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.0.0
         with:

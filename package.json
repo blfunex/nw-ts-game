@@ -16,6 +16,7 @@
     "create": "node tools/create",
     "compile": "rollup -c",
     "compile:watch": "npm run compile -- -w",
+    "compile:production": "cross-env NODE_ENV=production rollup -c",
     "server": "live-server public"
   },
   "dependencies": {
@@ -28,6 +29,7 @@
     "@types/node": "^14.14.22",
     "@types/nw.gui": "0.0.20",
     "chokidar": "^3.5.1",
+    "cross-env": "^7.0.3",
     "live-server": "^1.2.1",
     "rollup": "^2.38.1",
     "rollup-plugin-glslify": "^1.2.0",
