@@ -1,4 +1,3 @@
-(async function(){
 import { example } from '@namespace/example';
 
 console.clear();
@@ -144,5 +143,4 @@ const ctx = canvas.getContext("2d");
 
 ctx.fillStyle = "magenta";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
-})();
 //# sourceMappingURL=bundle.js.map
