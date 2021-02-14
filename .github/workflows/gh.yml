@@ -9,12 +9,14 @@ jobs:
         node-version: [10.x]
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.1
-        with:
-          persist-credentials: false
+        steps:
+          - uses: actions/checkout@v2.3.1
+          - uses: actions/setup-node@v2
+            with:
+              node-version: '12'
       - name: Install and Build 🔧
         run: |
-          sudo npm ci
+          sudo npm install
           sudo npm run compile:production
         # sudo npm test
       - name: Deploy 🚀
