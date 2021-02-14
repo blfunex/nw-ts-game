@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "Node",
+    "inlineSourceMap": true,
+    "outDir": "../build"
+  }
+}

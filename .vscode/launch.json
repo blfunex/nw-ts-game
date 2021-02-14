@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "nwjs",
+      "request": "launch",
+      "name": "Launch NWjs",
+      "nwjsVersion": "any",
+      "timeout": 30000,
+      "webRoot": "${workspaceFolder}",
+      // Replace this by the path  for the nw runtime
+      "runtimeExecutable": "c:/nw/nw.exe",
+      "reloadAfterAttached": true
+    }
+  ]
+}
