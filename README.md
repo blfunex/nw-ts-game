@@ -16,7 +16,7 @@ This a preconfigured mono-repo allowing:
 2. Clone this repository.
 3. Install dev dependancies, and reify local packages, using the following command
    ```bash
-   $ npm install
+   $ yarn install
    ```
 
 ## How to start dev environement ?
@@ -30,7 +30,7 @@ This a preconfigured mono-repo allowing:
 
 - Or on your **Terminal**:
   ```bash
-  $ npm run compile:watch
+  $ yarn compile:watch
   ```
 
 ## How to use the live server ?
@@ -39,7 +39,7 @@ This a preconfigured mono-repo allowing:
 
 - Or on your **Terminal**:
   ```bash
-  $ npm run server
+  $ yarn server
   ```
 
 **NOTE**: This with only static websites and nw.js in mind, advanced scenarios like proxying a custom backend might be considered in the future.
@@ -59,8 +59,8 @@ the word `@namespace` in the module name is configurable in the root `package.js
 You can use use the following command to make the local package, it will be created in the packages root folder of the repository.
 
 ```bash
-$ npm run create ecs
-$ npm install
+$ yarn create ecs
+$ yarn install
 ```
 
 **NOTE**: Your editor typescript language server might complain if you start using the new module name. give some time it will detect it, I usually help it by retyping again.

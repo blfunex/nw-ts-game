@@ -16,11 +16,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install and Build 🔧
         run: |
-          sudo npm install -g npm@^7.0.0
-          sudo npm -v
-          sudo npm install
-          sudo npm run compile:production
-        # sudo npm test
+          sudo npm install -g yarn
+          sudo yarn install
+          sudo yarn compile:production
+        # sudo yarn test
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
