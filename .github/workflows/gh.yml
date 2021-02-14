@@ -17,6 +17,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           sudo npm install -g npm@^7.0.0
+          sudo npm install
           sudo npm run compile:production
         # sudo npm test
       - name: Deploy 🚀
