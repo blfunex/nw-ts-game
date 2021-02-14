@@ -30,6 +30,7 @@ This a preconfigured mono-repo allowing:
 
 - Or on your **Terminal**:
   ```bash
+  $ npm install -g yarn
   $ yarn compile:watch
   ```
 
