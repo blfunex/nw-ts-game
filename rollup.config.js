@@ -76,8 +76,6 @@ export default [
       format: "es",
       sourcemap: !PRODUCTION,
       compact: PRODUCTION,
-      banner: "(async function(){",
-      footer: "})();",
     },
     plugins,
   },
