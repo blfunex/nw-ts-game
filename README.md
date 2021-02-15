@@ -10,7 +10,7 @@ This a preconfigured mono-repo allowing:
 
 **NOTE**: No type checking is done in the compilers, so make sure to use and editor with a typescript language server.
 
-## How to start this repository ?
+## How to start using this repository ?
 
 1. Install [node](https://nodejs.org/en/download/)
 2. Clone this repository.
@@ -19,16 +19,16 @@ This a preconfigured mono-repo allowing:
    $ yarn install
    ```
 
-## How to start dev environement ?
+## How to start your dev environement ?
 
-- In **VSCode**: (*Only first time you open project*)
+- Using **VSCode**: (*Only first time you open project*)
   1. Run Ctrl+Shift+P, select `Run Task`, select `Compile code`
   2. Close the task terminal
   3. Accept to allow the task to run automatically next time
     you open the workspace.
   4. Redo the first step to rerun the task
 
-- Or on your **Terminal**:
+- Using the **Terminal**:
   ```bash
   $ npm install -g yarn
   $ yarn compile:watch
@@ -36,20 +36,14 @@ This a preconfigured mono-repo allowing:
 
 ## How to use the live server ?
 
-- In **VSCode**: Run Ctrl+Shift+P, select `Run Task`, select `Run live server`
+- Using **VSCode**: Run Ctrl+Shift+P, select `Run Task`, select `Run live server`
 
-- Or on your **Terminal**:
+- Using the **Terminal**:
   ```bash
   $ yarn server
   ```
 
-**NOTE**: This with only static websites and nw.js in mind, advanced scenarios like proxying a custom backend might be considered in the future.
-
-## How to use with nw.js with this ?
-
-1. If you will use NW.js visit [this page](https://nwjs.io/) and follow instructions for your system.
-2. Install `Debugger for NWjs` for **VSCode**
-3. Press F5
+**NOTE**: This was made with only static websites and nw.js in mind, we might write about advanced scenarios in this explainer.
 
 ## How to create a local package ?
 
@@ -64,7 +58,13 @@ $ yarn create ecs
 $ yarn install
 ```
 
-**NOTE**: Your editor typescript language server might complain if you start using the new module name. give some time it will detect it, I usually help it by retyping again.
+**NOTE**: Your editor typescript language server might complain a bit, but few seconds and it will recognize the symlink made by yarn, or reprite the module name it will change it's mind eventually.
+
+## How to use with NW.js with this ?
+
+1. If you will use NW.js visit [this page](https://nwjs.io/) and follow install instructions for your OS.
+2. Install `Debugger for NWjs` for **VSCode**
+3. Press F5
 
 ## Additional tips
 
