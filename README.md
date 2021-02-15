@@ -34,7 +34,15 @@ This a preconfigured mono-repo allowing:
   $ yarn compile:watch
   ```
 
-## How to use the live server ?
+## How to use with NW.js with this ?
+
+1. If you will use NW.js visit [this page](https://nwjs.io/) and follow install instructions for your OS.
+2. Install `Debugger for NWjs` for **VSCode**
+3. Press F5
+
+<details>
+
+<summary><strong>How to use the live server ?</strong></summary>
 
 - Using **VSCode**: Run Ctrl+Shift+P, select `Run Task`, select `Run live server`
 
@@ -45,7 +53,10 @@ This a preconfigured mono-repo allowing:
 
 **NOTE**: This was made with only static websites and nw.js in mind, we might write about advanced scenarios in this explainer.
 
-## How to create a local package ?
+</details>
+<details>
+
+<summary><strong>How to create a local package ?</strong></summary>
 
 Suppose you want to make your local package named `ecs`, to avoid the mess of imports pointing to `"../../../core/ecs"` and use `"@namespace/ecs"`.
 
@@ -60,15 +71,13 @@ $ yarn install
 
 **NOTE**: Your editor typescript language server might complain a bit, but few seconds and it will recognize the symlink made by yarn, or reprite the module name it will change it's mind eventually.
 
-## How to use with NW.js with this ?
-
-1. If you will use NW.js visit [this page](https://nwjs.io/) and follow install instructions for your OS.
-2. Install `Debugger for NWjs` for **VSCode**
-3. Press F5
+</details>
 
 ## Additional tips
 
-### Deploying to a different repo ?
+<details>
+
+<summary><strong>Deploying to a different repo ?</strong></summary>
 
 I am a free github pleb so I can not use gh pages in private repos. The solution is to use a private repo for developement and a public repo for deployment.
 
@@ -86,7 +95,10 @@ I am a free github pleb so I can not use gh pages in private repos. The solution
    ```
    In `username/public-repo` replace `username` with you own, and `public-repo` is the name of the repo is name of the repo you have to make before pushing these changes.
 
-### Public build / private history
+</details>
+<details>
+
+<summary><strong>Public build / private history</strong></summary>
 
 If you want to have a private history of your build, you can deploy and whipe commit history.
 
@@ -109,7 +121,10 @@ In `.github/workflows/gh.yml`
 +         folder: public
 ```
 
-### Limit build trigger to only some repos ?
+</details>
+<details>
+
+<summary><strong>Limit build trigger to only some repos ?</strong></summary>
 
 If you use `gitflow`, every branch you push to will trigger the build process.
 To limit the actions script to only run on master pushes
@@ -129,3 +144,5 @@ on:
       - master
       - develop
 ```
+
+</details>
