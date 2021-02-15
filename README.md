@@ -16,6 +16,7 @@ This a preconfigured mono-repo allowing:
 2. Clone this repository.
 3. Install dev dependancies, and reify local packages, using the following command
    ```bash
+   $ npm install -g yarn
    $ yarn install
    ```
 
@@ -30,7 +31,6 @@ This a preconfigured mono-repo allowing:
 
 - Using the **Terminal**:
   ```bash
-  $ npm install -g yarn
   $ yarn compile:watch
   ```
 
