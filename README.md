@@ -65,3 +65,67 @@ $ yarn install
 ```
 
 **NOTE**: Your editor typescript language server might complain if you start using the new module name. give some time it will detect it, I usually help it by retyping again.
+
+## Additional tips
+
+### Deploying to a different repo ?
+
+I am a free github pleb so I can not use gh pages in private repos. The solution is to use a private repo for developement and a public repo for deployment.
+
+1. Go to your account's [personal token settings](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) and generate a personal token, copy that.
+2. Paste the token in a secret in your repo's [actions settings](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets) named `PERSONAL_TOKEN`
+3. Use the following code in `.github/workflows/gh.yml`:
+   ```diff
+         - name: Deploy public 🚀
+           uses: JamesIves/github-pages-deploy-action@4.0.0
+           with:
+   +         token: ${{ secrets.PERSONAL_TOKEN }}
+   +         repository-name: username/public-repo
+             branch: main
+             folder: public
+   ```
+   In `username/public-repo` replace `username` with you own, and `public-repo` is the name of the repo is name of the repo you have to make before pushing these changes.
+
+### Public build / private history
+
+If you want to have a private history of your build, you can deploy and whipe commit history.
+
+In `.github/workflows/gh.yml`
+
+```diff
+-     - name: Deploy 🚀
++     - name: Deploy public 🚀
+        uses: JamesIves/github-pages-deploy-action@4.0.0
+        with:
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          repository-name: username/public-repo
++         single-commit: true
+          branch: gh-pages
+          folder: public
++     - name: Deploy history 📚
++       uses: JamesIves/github-pages-deploy-action@4.0.0
++       with:
++         branch: history
++         folder: public
+```
+
+### Limit build trigger to only some repos ?
+
+If you use `gitflow`, every branch you push to will trigger the build process.
+To limit the actions script to only run on master pushes
+
+```yml
+on:
+  push:
+    branches: master
+```
+
+For multiple branches
+
+```yml
+on:
+  push:
+    branches:
+      - master
+      - develop
+```
