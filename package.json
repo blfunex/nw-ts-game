@@ -14,7 +14,7 @@
   "js-flags": "--harmony",
   "scripts": {
     "run": "nw .",
-    "create": "node tools/create",
+    "package": "node tools/create",
     "compile": "rollup -c",
     "compile:watch": "rollup -c -w",
     "compile:production": "rollup -c rollup.config.production.js",

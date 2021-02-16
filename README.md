@@ -76,12 +76,12 @@ After watching someone's game devlog on YouTube, and hearing about his struggle 
 
 Suppose you want to make your local package named `ecs`, to avoid the mess of imports pointing to `"../../../core/ecs"` and use `"@namespace/ecs"`.
 
-the word `@namespace` in the module name is configurable in the root `package.json`, under `name`.
+the `@namespace` part in the module name is configurable in the root `package.json`, the `name` property.
 
 You can use use the following command to make the local package, it will be created in the packages root folder of the repository.
 
 ```bash
-$ yarn create ecs
+$ yarn package ecs
 $ yarn install
 ```
 
