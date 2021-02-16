@@ -15,6 +15,15 @@ After watching someone's game devlog on YouTube, and hearing about his struggle 
   - Module / import system
   - Type annotation
 
+| Developement build time | Production build time |
+|-------------------------|-----------------------|
+| ![developement][1]      | ![production][2]      |
+
+[1]: https://i.imgur.com/176Kk5j.png
+[2]: https://i.imgur.com/XLQ3Uu3.png
+
+<small style="opacity:0.5">The build time in this is for the example code in this repo, the code uses features that require multiple passes, the developement build skips a lot of passes and thus can be very fast, in addition to those passes the production build does a lot of minification step, and transformations to build for legacy environements.</small>
+
 ## How to use this repository ?
 
 1. Install [node](https://nodejs.org/en/download/)
