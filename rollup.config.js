@@ -4,79 +4,57 @@ import { dependencies, devDependencies } from "./package.json";
 import glslify from "rollup-plugin-glslify";
 import resolve from "@rollup/plugin-node-resolve";
 import sucrase from "@rollup/plugin-sucrase";
-import { terser } from "rollup-plugin-terser";
 
-const PRODUCTION = (process.env.NODE_ENV || "").trim() === "production";
-const internal = ["gl-matrix"];
+import { join } from "path";
 
-const plugins = [
-  glslify({
-    compress: PRODUCTION,
-  }),
-  resolve({
-    extensions: [".js", ".ts"],
-  }),
-  // TODO: Investigate better solutions than sucrase for production,
-  //       sucrase does not guarantee best JS output for production,
-  ///      but since TypeScript +4.0 support is not working properly
-  //       I have no choice
-  sucrase({
-    exclude: ["node_modules/**"],
-    transforms: ["typescript"],
-  }),
+export const source = join(__dirname, "app", "main.ts");
+export const module = join(__dirname, "public", "bundle.mjs");
+export const script = join(__dirname, "public", "bundle.js");
+
+const bundled_modules = ["gl-matrix"];
+
+const nwjs_modules = ["nw.gui"].concat(builtinModules);
+
+const developement_modules = devDependencies
+  ? Object.keys(devDependencies)
+  : [];
+
+const modules = dependencies ? Object.keys(dependencies) : [];
+
+const external_modules = modules.filter(
+  module => !bundled_modules.includes(module)
+);
+
+export const external = [
+  ...nwjs_modules,
+  ...developement_modules,
+  ...external_modules,
 ];
-
-if (PRODUCTION) {
-  plugins.push(
-    terser({
-      module: true,
-      toplevel: false,
-      format: {
-        wrap_iife: true,
-      },
-      compress: {
-        global_defs: {
-          "process.env.NODE_ENV": process.env.NODE_ENV,
-        },
-        hoist_vars: true,
-        drop_console: true,
-        drop_debugger: true,
-        passes: 3,
-        ecma: 5,
-      },
-      mangle: {
-        keep_classnames: false,
-        keep_fnames: false,
-        properties: {
-          builtins: false,
-          keep_quoted: true,
-          regex: /^[_A-Z][^_A-Z]/,
-        },
-        safari10: false,
-        ie8: false,
-      },
-    })
-  );
-}
 
 export default [
   {
-    input: "app/main.ts",
-    external: ["nw.gui"].concat(
-      builtinModules,
-      devDependencies ? Object.keys(devDependencies) : [],
-      dependencies
-        ? Object.keys(dependencies).filter(
-            module => !internal.includes(module)
-          )
-        : []
-    ),
+    input: source,
+    external,
     output: {
-      file: "public/bundle.js",
-      format: "es",
-      sourcemap: !PRODUCTION,
-      compact: PRODUCTION,
+      file: module,
+      format: "esm",
+      sourcemap: true,
+      compact: false,
     },
-    plugins,
+    plugins: [
+      glslify({
+        compress: false,
+      }),
+      resolve({
+        extensions: [".js", ".ts"],
+      }),
+      sucrase({
+        exclude: ["node_modules/**"],
+        transforms: [
+          "typescript",
+          /* "jsx" */
+        ],
+      }),
+    ],
   },
 ];

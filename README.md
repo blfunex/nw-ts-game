@@ -1,39 +1,21 @@
-# TypeScript Game developement Starter
+# TypeScript Boilerplate for Game Developers
 
-This a preconfigured mono-repo allowing:
+## Motivation
 
-- Fast iterative developement with the help `rollup` and `sucrase`
-- Live reload in the browser (via `live-server`) and in nw.js (via `chokidar` and a small module).
-- Compressed, mangled, wrangled, and tree shaken output for production using `rollup` and `terser`.
-- Automatic production build and gh-pages deployement of only the public folder.
-- GLSL Shader imports via the `glslify` module.
+After watching someone's game devlog on YouTube, and hearing about his struggle to setup typescript properly, I felt the urge to help out beginner TypeScript developers struggling to get started with the JavaScript ecosystem, I made a boilerplate project for people to clone and profit from.
 
-**NOTE**: No type checking is done in the compilers, so make sure to use and editor with a typescript language server.
+## Main concerns
 
-<details>
+- Fast developement cycle
+- Assets `import` is simple (`glsl` is supported, images are planned, more to come)
+- Worry free public deployement (code is minified, names are stripped, unused code eliminated)
+- Support for most helpful ECMAScript/TypeScript features
+  - Top level await
+  - Class declaration
+  - Module / import system
+  - Type annotation
 
-<summary><strong>Production build details</strong></summary>
-
-## Restrictions imposed by Sucrase on TypeScript code
-
-- No namespace or module statements
-- Const enums are just treated like simple enums and are preserved
-- Simple type stripping.
-- JSX is possible
-
-Sucrase is the fastest well maintained ts plugin I could find for Rollup.
-
-I intend to use the TypeScript compiler for production but it seems that version [4.0 ecosystem is not yet fully ready](https://github.com/rollup/plugins/issues/287), using the compiler in the production allows the use of const enums that turn into simple number constants, if I forget this please open an issue alerting me of it, or contribute it I will accept a PR for it.
-
-## About the production build
-
-The code is first compiled by Sucrase from TypeScript to JavaScript is then tree shaken and bundled using Rollup (unused code is striped, virtual namespaces from imports are simplified), Terser then compresses the code striping console calls, debugger statements, and dead debugging code depending on `process.env.NODE_ENV !== "production"`, it then mangles the all variable names, and some property names according to the following RegExp `/^[_A-Z][^_A-Z]/`, meaning that it mangles like  `Render` and `_render`, which corespond to the `C#` convention for `public` and `private` names, but seeing as JavaScript's convention is `render`, it wont be mangled so you can use API by the browser freely, you are free to disable mangling, just comment out the `properties` object in `rollup.config.js`, next it strips code that was left unsused because of the dead code ellimination or because it was used in console calls.
-
-GLSLify plugin is instructed to compress the GLSL code in production, you can disable it in `rollup.config.js` by commenting out the compress boolean in the glslify plugin.
-
-</details>
-
-## How to start using this repository ?
+## How to use this repository ?
 
 1. Install [node](https://nodejs.org/en/download/)
 2. Clone this repository.
@@ -49,7 +31,7 @@ GLSLify plugin is instructed to compress the GLSL code in production, you can di
   1. Run Ctrl+Shift+P, select `Run Task`, select `Compile code`
   2. Close the task terminal
   3. Accept to allow the task to run automatically next time
-    you open the workspace.
+      you open the workspace.
   4. Redo the first step to rerun the task
 
 - Using the **Terminal**:

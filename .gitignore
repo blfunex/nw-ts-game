@@ -1,7 +1,8 @@
-# Build file
+# Build files
 
 public/bundle.js
-public/bundle.js.map
+public/bundle.mjs
+public/bundle.mjs.map
 
 # Logs
 logs
