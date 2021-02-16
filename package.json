@@ -11,6 +11,7 @@
     "width": 800,
     "height": 450
   },
+  "js-flags": "--harmony",
   "scripts": {
     "run": "nw .",
     "create": "node tools/create",
