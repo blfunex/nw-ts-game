@@ -39,7 +39,7 @@ export default [
         },
         compress: {
           global_defs: {
-            "process.env.NODE_ENV": process.env.NODE_ENV,
+            "process.env.NODE_ENV": "production",
           },
           hoist_vars: true,
           drop_console: true,
