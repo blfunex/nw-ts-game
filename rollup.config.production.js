@@ -14,9 +14,10 @@ export default [
     output: {
       file: module,
       format: "esm",
-      sourcemap: true,
-      sourcemapExcludeSources: true,
       compact: true,
+      sourcemap: false,
+      // sourcemap: true,
+      // sourcemapExcludeSources: true,
     },
     plugins: [
       glslify({
